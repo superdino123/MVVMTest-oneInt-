@@ -1,0 +1,11 @@
+MVVMTest
+	----Model
+		----BoolConverter.cs  (bool类型数据反转值)
+		----RelayCommand.cs  (命令帮助类[ICommand接口实现类])
+	----View
+		----MainWindow.xaml  (用户主界面)
+		----ViewResource  (资源字典)
+			----MainWindowDictionary.xaml  (用户主界面资源字典)
+	----ViewModel
+		----CheckBoxViewModel.cs  (数据结构定义类)
+		----CheckBoxViewModelCase.cs  (实体绑定类)

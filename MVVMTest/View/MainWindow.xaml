@@ -1,0 +1,38 @@
+﻿<Window x:Class="MVVMTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTest.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <!--style resource-->
+        <ResourceDictionary Source="ViewResource/MainWindowDictionary.xaml" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource CheckBoxDataProvider}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--title-->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="MVVM Demo" />
+        </StackPanel>
+        <!--main-->
+        <StackPanel Grid.Row="1">
+            <CheckBox Content="first"
+                      IsChecked="{Binding Source={StaticResource CheckBoxDataProvider},Path=threeCheckBox,Converter={StaticResource FirstCheckBoxBoolConverter}}" />
+            <CheckBox Content="second"
+                      IsChecked="{Binding ElementName=CheckBox3,Path=IsChecked,Mode=OneWay}" />
+            <CheckBox x:Name="CheckBox3" Content="third"
+                      IsChecked="{Binding Source={StaticResource CheckBoxDataProvider},Path=threeCheckBox,Converter={StaticResource ThirdCheckBoxBoolConverter}}" />
+        </StackPanel>
+        <!--submit-->
+        <StackPanel Grid.Row="2">
+            <Button Content="Submit"
+                    Command="{Binding CheckBoxCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
